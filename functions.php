@@ -1,4 +1,43 @@
 <?php
+
+function del_secoes_painel(){
+	global$wp_meta_boxes;
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+  }
+   
+  add_action('wp_dashboard_setup', 'del_secoes_painel');
+  
+  
+  // Customizar o Footer do WordPress
+  function remove_footer_admin () {
+	  echo '© <a href="http://ncoisas.digital/">N Coisas Digitais</a> - Conecte-se';
+  }
+  add_filter('admin_footer_text', 'remove_footer_admin');
+  
+  
+  // Saudação customizada
+  function replace_howdy( $wp_admin_bar ) {
+	  $my_account=$wp_admin_bar->get_node('my-account');
+	  $newtitle = str_replace( 'Olá', 'Bem vindo', $my_account->title );            
+	  $wp_admin_bar->add_node( array(
+		  'id' => 'my-account',
+		  'title' => $newtitle,
+	  ) );
+  }
+  
+  //Custom dashboard logo
+  add_action('admin_head', 'my_custom_logo');
+  function my_custom_logo() {
+  echo '
+  #wp-admin-bar-wp-logo .ab-icon {background: url('.get_bloginfo('template_directory').'/img/lab_wp.png) no-repeat center top !important; }';
+  }
+
+
 // global variables
 $themename = "Writing";
 define('theme_name', $themename);
@@ -135,9 +174,9 @@ register widgets
 ------------------------------------------- */
 function asalah_widgets_init() {
 	register_sidebar(array(
-	    'name' => __('Default sidebar', 'asalah'),
+	    'name' => __('Barra Lateral Padrao', 'asalah'),
 	    'id' => 'sidebar-1',
-	    'description' => __('This is the default sidebar in your blog, add widgets here and it will appear on all pages have this sidebar'  , 'asalah'),
+	    'description' => __('Esta é a barra padrão do seu blog, adicione widgets aqui e ele aparecerá em todas as páginas com esta barra lateral'  , 'asalah'),
 	    'before_widget' => '<div id="%1$s" class="widget_container widget_content widget %2$s clearfix">',
 	    'after_widget' => "</div>",
 	    'before_title' => '<h4 class="widget_title title"><span class="page_header_title">',
@@ -145,9 +184,9 @@ function asalah_widgets_init() {
 	));
 
 	register_sidebar(array(
-	    'name' => __('Sliding Sidebar', 'asalah'),
+	    'name' => __('Barra Lateral Deslizante', 'asalah'),
 	    'id' => 'sidebar-2',
-	    'description' => __('This is the sliding side bar, it slides from the right side if you click on user info button'  , 'asalah'),
+	'description' => __('Esta é a barra lateral deslizante, ela desliza do lado direito se voce clicar no botão de informações do usuário'  , 'asalah'),
 	    'before_widget' => '<div id="%1$s" class="widget_container widget_content widget %2$s clearfix">',
 	    'after_widget' => "</div>",
 	    'before_title' => '<h4 class="widget_title title"><span class="page_header_title">',
@@ -155,9 +194,9 @@ function asalah_widgets_init() {
 	));
 
 	register_sidebar(array(
-	    'name' => __('404 page sidebar', 'asalah'),
+	    'name' => __('Barra da Página 404', 'asalah'),
 	    'id' => 'sidebar-3',
-	    'description' => __('Here you add widgets to 404 Error page'  , 'asalah'),
+	    'description' => __('Apresenta informações na página de erro'  , 'asalah'),
 	    'before_widget' => '<div id="%1$s" class="widget_container widget_content widget %2$s clearfix">',
 	    'after_widget' => "</div>",
 	    'before_title' => '<h4 class="widget_title title"><span class="page_header_title">',
@@ -165,7 +204,7 @@ function asalah_widgets_init() {
 	));
 
 	register_sidebar(array(
-	    'name' => __('Footer Widgets 1', 'asalah'),
+	    'name' => __('Rodapé 1', 'asalah'),
 	    'id' => 'footer-1',
 	    'description' => '',
 	    'before_widget' => '<div id="%1$s" class="widget_container widget_content widget %2$s clearfix">',
@@ -175,7 +214,7 @@ function asalah_widgets_init() {
 	));
 
 	register_sidebar(array(
-	    'name' => __('Footer Widgets 2', 'asalah'),
+	    'name' => __('Rodapé 2', 'asalah'),
 	    'id' => 'footer-2',
 	    'description' => '',
 	    'before_widget' => '<div id="%1$s" class="widget_container widget_content widget %2$s clearfix">',
@@ -185,7 +224,7 @@ function asalah_widgets_init() {
 	));
 
 	register_sidebar(array(
-	    'name' => __('Footer Widgets 3', 'asalah'),
+	    'name' => __('Rodapé 3', 'asalah'),
 	    'id' => 'footer-3',
 	    'description' => '',
 	    'before_widget' => '<div id="%1$s" class="widget_container widget_content widget %2$s clearfix">',
