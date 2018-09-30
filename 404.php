@@ -3,11 +3,11 @@
 
 	<main class="main_content 404_page col-md-6">
 		<header class="page-header page_header_404 page_404_main_title clearfix">
-			<h1 class="page-title page_title_404 title"><?php _e( '404', 'asalah' ); ?></h1>
+			<h1 class="page-title page_title_404 title"><?php _e( 'Ops!', 'asalah' ); ?></h1>
 		</header><!-- .page-header -->
 
 		<div class="content_wrapper_404">
-			<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'asalah' ); ?></p>
+			<p><?php _e( 'Algo de errado não está certo, a página que voce buscou não existe.', 'asalah' ); ?></p>
 			<?php get_search_form(); ?>
 		</div>
 	</main><!-- .main_content -->
