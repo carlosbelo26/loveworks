@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<!--
+	Projeto Love Works 
+	loveworks.com.br | Love Works 
+	Free for personal and commercial use under the CCA 3.0 license
+	Projeto por: N Coisas Digitais | www.ncoisas.digital
+-->
+
+
 <html <?php language_attributes(); ?> class="no-js">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">

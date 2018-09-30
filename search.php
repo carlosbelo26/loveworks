@@ -4,7 +4,7 @@ get_header(); ?>
 	<main class="main_content search_page_content <?php echo asalah_default_content_class(); ?>">
 
 		<header class="page-header page_main_title clearfix">
-			<h1 class="page-title title"><?php printf( __( 'Search Results for: %s', 'asalah' ), get_search_query() ); ?></h1>
+			<h1 class="page-title title"><?php printf( __( 'Resultados de sua pesquisa para: %s', 'asalah' ), get_search_query() ); ?></h1>
 		</header><!-- .page-header -->
 
 		<?php if ( have_posts() ) : ?>
