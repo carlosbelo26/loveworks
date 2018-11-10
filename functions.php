@@ -22,6 +22,7 @@ function writing_setup() {
 
  require "inc/fonts.php";
  require "inc/mods.php";
+ remove_filter('template_redirect','redirect_canonical');
 
 	/* --------
 	add thumbnail sizes
@@ -292,6 +293,7 @@ function asalah_scripts() {
 	}else{
 		wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/framework/bootstrap/css/bootstrap.css', array(), '1' );
 	}
+	wp_enqueue_style( 'bootstrap-theme', get_template_directory_uri() . '/framework/bootstrap/css/bootstrap-theme.min.css', array(), '1' );
 	if (asalah_cross_option('asalah_discord_url') != '') {
 			wp_enqueue_style( 'discord', get_template_directory_uri() . '/framework/font-awesome/css/discord.css', array(), '1' );
 	}
@@ -321,6 +323,8 @@ function asalah_scripts() {
 	// footer scripts
 	wp_enqueue_script( 'asalah-bootstrap', get_template_directory_uri() . '/framework/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '1', true );
 	wp_enqueue_script( 'asalah-script', get_template_directory_uri() . '/js/asalah.js', array( 'jquery' ), '3.520', true );
+	wp_enqueue_script( 'asalah-custom', get_template_directory_uri() . '/js/custom.js', array( 'jquery' ), '1' );
+	
 	if (asalah_option('asalah_lazyload_iframe_banner') == true) {
 		wp_enqueue_script( 'asalah-lazyload', get_template_directory_uri() . '/js/lazysizes.min.js', array( 'jquery' ), '3.520', true );
 	}
